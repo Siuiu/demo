@@ -1,5 +1,6 @@
 package com.ly.demo;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONConfig;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.excel.EasyExcel;
@@ -12,8 +13,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.support.atomic.RedisAtomicInteger;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 public class DemoApplicationTests {
@@ -21,6 +25,14 @@ public class DemoApplicationTests {
     UserService userService;
     @Autowired
     StringRedisTemplate redisTemplate;
+    @Test
+    public void smsTest(){
+        String tenantCode="liuyang";
+        String date=DateUtil.today().replace("-","");
+        String key=date+"_"+tenantCode;
+        redisTemplate.opsForValue().increment(key, 1);
+        redisTemplate.expire(key,1, TimeUnit.DAYS);
+    }
     @Test
     public void converTest(){
         UserVo liu = UserConverter.INSTANCE.cover(new UserEntity().setId(9).setName("liu").setOld(18));
@@ -32,7 +44,8 @@ public class DemoApplicationTests {
     }
     @Test
     public void addUser(){
-        boolean aaaase = userService.save(new UserEntity(null, "aaaase", 333, null, null));
+        boolean aaaase = userService.save(new UserEntity(null, "wangwu", 38, null, null));
+        System.out.println(aaaase);
     }
     @Test
     public void getRedis(){

@@ -21,8 +21,7 @@ import java.util.Map;
 public class ExceptionControllerAdvice {
     /**
      * 参数非法（效验参数）异常 MethodArgumentNotValidException
-     * @param e
-     * @return
+     * @return SmResult
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -31,9 +30,7 @@ public class ExceptionControllerAdvice {
         BindingResult bindingResult = e.getBindingResult();
 
         Map<String,String> errMap = new HashMap<>();
-        bindingResult.getFieldErrors().forEach((fieldError) -> {
-            errMap.put(fieldError.getField(),fieldError.getDefaultMessage());
-        });
+        bindingResult.getFieldErrors().forEach((fieldError) -> errMap.put(fieldError.getField(),fieldError.getDefaultMessage()));
         return SmResult.fail(400,"提交的数据不合法").data(errMap);
     }
 }

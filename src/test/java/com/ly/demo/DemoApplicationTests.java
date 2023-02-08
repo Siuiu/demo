@@ -13,9 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.support.atomic.RedisAtomicInteger;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,33 +24,46 @@ public class DemoApplicationTests {
     UserService userService;
     @Autowired
     StringRedisTemplate redisTemplate;
+
     @Test
-    public void smsTest(){
-        String tenantCode="liuyang";
-        String date=DateUtil.today().replace("-","");
-        String key=date+"_"+tenantCode;
+    public void smsTest() {
+        String tenantCode = "liuyang";
+        String date = DateUtil.today().replace("-", "");
+        String key = date + "_" + tenantCode;
         redisTemplate.opsForValue().increment(key, 1);
-        redisTemplate.expire(key,1, TimeUnit.DAYS);
+        redisTemplate.expire(key, 1, TimeUnit.DAYS);
     }
+
     @Test
-    public void converTest(){
+    public void converTest() {
         UserVo liu = UserConverter.INSTANCE.cover(new UserEntity().setId(9).setName("liu").setOld(18));
         System.out.println(liu);
     }
+
     @Test
-    public void getList(){
+    public void test11() {
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("test", new UserVo().setUsername("刘"));
+        System.out.println(JSONUtil.toJsonStr(SmResult.ok(map)));
+    }
+
+    @Test
+    public void getList() {
         System.out.println(userService.getList());
     }
+
     @Test
-    public void addUser(){
+    public void addUser() {
         boolean aaaase = userService.save(new UserEntity(null, "wangwu", 38, null, null));
         System.out.println(aaaase);
     }
+
     @Test
-    public void getRedis(){
+    public void getRedis() {
         String k1 = redisTemplate.opsForValue().get("k1");
         System.out.println(k1);
     }
+
     @Test
     public void contextLoads() {
         SmResult list = userService.getList();
@@ -61,14 +73,16 @@ public class DemoApplicationTests {
         System.out.println(smResult.getData());
 
     }
+
     @Test
-    public void hutool(){
-        UserEntity userEntity = new UserEntity(1, null, 1,null,null);
-        String s = JSONUtil.toJsonStr(userEntity,new JSONConfig().setIgnoreNullValue(false));
+    public void hutool() {
+        UserEntity userEntity = new UserEntity(1, null, 1, null, null);
+        String s = JSONUtil.toJsonStr(userEntity, new JSONConfig().setIgnoreNullValue(false));
         System.out.println(s);
     }
+
     @Test
-    public void easyExcelWrite(){
+    public void easyExcelWrite() {
         List<UserEntity> list = userService.list();
         String fileName = "src/main/resources/simpleWrite.xlsx";
         EasyExcel.write(fileName, UserEntity.class)
@@ -76,4 +90,9 @@ public class DemoApplicationTests {
                 .doWrite(list);
     }
 
+    @Test
+    public void transactionTest() {
+        userService.transactionTest1();
+        ;
+    }
 }

@@ -13,4 +13,6 @@ import com.ly.demo.entity.UserEntity;
 public interface UserService extends IService<UserEntity> {
 
     SmResult getList();
+
+    void transactionTest1();
 }

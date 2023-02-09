@@ -24,7 +24,7 @@ public class Test {
     private static UserService u;
 
     public static void main(String[] args) {
-        CheckWorkUtil.getWorkDay();
+        CheckWorkUtil.getWorkDay(null);
     }
 
 

@@ -5,6 +5,7 @@ import cn.hutool.core.date.BetweenFormatter;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.Week;
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 
 import java.math.BigDecimal;
@@ -18,8 +19,13 @@ import static cn.hutool.core.date.Week.FRIDAY;
  * @Date 2023/2/8 15:49
  **/
 public class CheckWorkUtil {
-    public static void getWorkDay() {
-        String json = FileUtil.readUtf8String("/Users/liuyang/IdeaProjects/demo/src/main/resources/checkWork.text");
+    public static void getWorkDay(String filename) {
+        String json=null;
+        if(StrUtil.isBlank(filename)){
+            json = FileUtil.readUtf8String("/Users/liuyang/IdeaProjects/demo/src/main/resources/checkWork.text");
+        }else {
+            json = FileUtil.readUtf8String("/Users/liuyang/IdeaProjects/demo/src/main/resources/"+filename+".text");
+        }
         JsonRootBean workTime = JSONUtil.toBean(json, JsonRootBean.class);
         BigDecimal weekWorkTime = new BigDecimal(0);
         for (int j = 0; j < workTime.getDayInfos().size(); j++) {
@@ -50,8 +56,9 @@ public class CheckWorkUtil {
                         .divide(new BigDecimal(6 - week.getValue()),BigDecimal.ROUND_CEILING).subtract(new BigDecimal(7));
                 if(avgDayTime.intValue()<0){
                     System.out.println("             第" + weekOfMonth + "周工作时长:" + weekWorkTime+",该周工时已满,准点下班!!!");
+                    continue;
                 }
-                System.out.println("             第" + weekOfMonth + "周工作时长:" + weekWorkTime+",每日还需加班"+avgDayTime);
+                System.out.println("             第" + weekOfMonth + "周工作时长:" + weekWorkTime+",每日还需加班"+avgDayTime+"小时");
             }
         }
     }

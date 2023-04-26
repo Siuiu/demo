@@ -1,11 +1,14 @@
 package com.ly.demo.entity;
 
+import cn.hutool.poi.excel.ExcelUtil;
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -53,4 +56,6 @@ public class UserEntity implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    @NotBlank(message = "请输入需要修改的数据")
+    public Long iddd;
 }

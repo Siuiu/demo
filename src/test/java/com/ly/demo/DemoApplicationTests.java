@@ -1,5 +1,6 @@
 package com.ly.demo;
 
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONConfig;
 import cn.hutool.json.JSONUtil;
@@ -11,12 +12,15 @@ import com.ly.demo.entity.UserVo;
 import com.ly.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 public class DemoApplicationTests {
@@ -54,7 +58,7 @@ public class DemoApplicationTests {
 
     @Test
     public void addUser() {
-        boolean aaaase = userService.save(new UserEntity(null, "wangwu", 38, null, null));
+        boolean aaaase = userService.save(new UserEntity());
         System.out.println(aaaase);
     }
 
@@ -76,7 +80,7 @@ public class DemoApplicationTests {
 
     @Test
     public void hutool() {
-        UserEntity userEntity = new UserEntity(1, null, 1, null, null);
+        UserEntity userEntity = new UserEntity();
         String s = JSONUtil.toJsonStr(userEntity, new JSONConfig().setIgnoreNullValue(false));
         System.out.println(s);
     }
@@ -89,10 +93,15 @@ public class DemoApplicationTests {
                 .sheet("模板")
                 .doWrite(list);
     }
-
     @Test
     public void transactionTest() {
         userService.transactionTest1();
-        ;
     }
+    @Test
+    public void streamtest() {
+        ArrayList<UserEntity> integers = ListUtil.toList(new UserEntity().setId(10),new UserEntity().setId(8),new UserEntity().setId(9));
+        integers.stream().sorted((a,b)->a.getId()-b.getId());
+        System.out.println(JSONUtil.toJsonStr(integers));
+    }
+
 }

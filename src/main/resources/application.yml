@@ -13,3 +13,5 @@ mybatis-plus:
   configuration:
     # 日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+baas:
+  role: 1,2,3,4

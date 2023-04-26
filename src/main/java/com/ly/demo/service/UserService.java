@@ -15,4 +15,6 @@ public interface UserService extends IService<UserEntity> {
     SmResult getList();
 
     void transactionTest1();
+
+    String getValue();
 }

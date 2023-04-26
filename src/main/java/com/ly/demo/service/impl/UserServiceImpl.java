@@ -1,5 +1,6 @@
 package com.ly.demo.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,11 +10,13 @@ import com.ly.demo.exception.SHException;
 import com.ly.demo.mapper.UserMapper;
 import com.ly.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author liuyang
@@ -40,16 +43,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
         this.page(page, null);
         return SmResult.ok().data(page);
     }
+    @Transactional(rollbackFor = Exception.class)
+    public void transactionTest1(){
+        this.transactionTest12();
+        throw new SHException("6");
+    }
+    @Value("#{'${baas.role}'.split(',')}")
+    private List<Long> menuIds;
+    @Override
+    public String getValue() {
+        return JSONUtil.toJsonStr(menuIds);
+    }
 
     @Transactional(rollbackFor = Exception.class)
-    public void transactionTest1() {
-        UserEntity user = new UserEntity().setId(13).setName("laoliu");
+    public void transactionTest12() {
+        UserEntity user = new UserEntity().setId(13).setName("dsad");
         mapper.updateById(user);
-        try {
-            int i =19/0;
-        }catch (Exception e){
-            throw e;
-        }
     }
 }
 

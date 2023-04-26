@@ -4,19 +4,18 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.GifCaptcha;
 import cn.hutool.json.JSONUtil;
 import com.ly.demo.entity.SmResult;
+import com.ly.demo.entity.UserEntity;
 import com.ly.demo.entity.UserVo;
 import com.ly.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.IOException;
 
 @Slf4j
@@ -26,8 +25,8 @@ public class HelloController {
     private UserService service;
     private static UserService userService;
 
-    @GetMapping("/hello")
-    public SmResult hello() {
+    @PostMapping("/hello")
+    public SmResult hello(@Valid @RequestBody UserEntity user) {
         return userService.getList();
     }
 
@@ -50,5 +49,9 @@ public class HelloController {
     @PostConstruct
     public void init() {
         userService = this.service;
+    }
+    @RequestMapping("/getValue")
+    public String testValue(){
+        return userService.getValue();
     }
 }

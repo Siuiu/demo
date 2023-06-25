@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @SpringBootTest
 public class DemoApplicationTests {
@@ -31,11 +30,11 @@ public class DemoApplicationTests {
 
     @Test
     public void smsTest() {
-        String tenantCode = "liuyang";
-        String date = DateUtil.today().replace("-", "");
-        String key = date + "_" + tenantCode;
-        redisTemplate.opsForValue().increment(key, 1);
-        redisTemplate.expire(key, 1, TimeUnit.DAYS);
+//        String tenantCode = "liuyang";
+//        String date = DateUtil.today().replace("-", "");
+//        String key = date + "_" + tenantCode;
+//        redisTemplate.opsForValue().increment(key, 1);
+//        redisTemplate.expire(key, 1, TimeUnit.DAYS);
     }
 
     @Test
@@ -64,8 +63,8 @@ public class DemoApplicationTests {
 
     @Test
     public void getRedis() {
-        String k1 = redisTemplate.opsForValue().get("k1");
-        System.out.println(k1);
+//        String k1 = redisTemplate.opsForValue().get("k1");
+//        System.out.println(k1);
     }
 
     @Test
@@ -92,10 +91,6 @@ public class DemoApplicationTests {
         EasyExcel.write(fileName, UserEntity.class)
                 .sheet("模板")
                 .doWrite(list);
-    }
-    @Test
-    public void transactionTest() {
-        userService.transactionTest1();
     }
     @Test
     public void streamtest() {

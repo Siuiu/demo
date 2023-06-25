@@ -10,4 +10,5 @@ import com.ly.demo.entity.AccountEntity;
 */
 public interface AccountService extends IService<AccountEntity> {
 
+
 }

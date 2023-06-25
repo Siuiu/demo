@@ -11,9 +11,9 @@ public class StructureEntity {
     private String fieldName;
     private Object fieldValue;
     private String fieldType;
-    public void addField(String name, Class<?> type) {
+    public void addField(String name, String type) {
         fieldName = name;
-        fieldType = type.getName();
+        fieldType = type;
     }
 }
 

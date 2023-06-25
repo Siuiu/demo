@@ -2,14 +2,20 @@ package com.ly.demo.controller;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.GifCaptcha;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.json.JSONUtil;
-import com.ly.demo.entity.SmResult;
-import com.ly.demo.entity.UserEntity;
-import com.ly.demo.entity.UserVo;
+import com.ly.demo.entity.*;
 import com.ly.demo.service.UserService;
+import com.ly.demo.utils.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.util.pattern.PathPattern;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
@@ -17,6 +23,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -50,8 +65,85 @@ public class HelloController {
     public void init() {
         userService = this.service;
     }
+
     @RequestMapping("/getValue")
-    public String testValue(){
+    public String testValue() {
         return userService.getValue();
     }
+
+    @Autowired
+    WebApplicationContext applicationContext;
+
+    @GetMapping("/getInterfacePath")
+    public List<InterfaceEntity> getInterfacePath() {
+        RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
+        // 拿到Handler适配器中的全部方法
+        Map<RequestMappingInfo, HandlerMethod> methodMap = mapping.getHandlerMethods();
+        List<InterfaceEntity> objects = new ArrayList<>();
+        for (RequestMappingInfo info : methodMap.keySet()) {//获取请求路径
+            List<PathPattern> pathPatterns = new ArrayList<>(info.getPathPatternsCondition().getPatterns());
+            List<RequestMethod> types = new ArrayList<>(info.getMethodsCondition().getMethods());
+            String url = pathPatterns.get(0).getPatternString();
+            if ("/error".equals(url)) {
+                log.info(url);
+                continue;
+            }
+            if (CollUtil.isEmpty(types)) {
+                //@RequestMapping("/getValue")修饰的路径不会显示请求方式
+                types.add(RequestMethod.POST);
+            }
+            //获取全部请求名称
+            objects.add(new InterfaceEntity().setUrl(url).setType(types.get(0).name()));
+        }
+        return objects;
+    }
+
+    @GetMapping("/gptGetInterfacePath")
+    public List<InterfaceEntity> gptGetInterfacePath() {
+        RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
+        Map<RequestMappingInfo, HandlerMethod> methodMap = mapping.getHandlerMethods();
+        List<InterfaceEntity> objects = new ArrayList<>();
+        for (RequestMappingInfo info : methodMap.keySet()) {
+            System.out.println(JSONUtil.toJsonStr(info));
+            InterfaceEntity interfaceEntity = new InterfaceEntity();
+            List<PathPattern> pathPatterns = new ArrayList<>(info.getPathPatternsCondition().getPatterns());
+            List<RequestMethod> types = new ArrayList<>(info.getMethodsCondition().getMethods());
+            String url = pathPatterns.get(0).getPatternString();
+
+            //排除默认的请求
+            if ("/error".equals(url)) {
+                log.info(url);
+                continue;
+            }
+
+            //如果是使用@RequestMapping修饰的
+            if (CollUtil.isEmpty(types)) {
+                types.add(RequestMethod.POST);
+            }
+            interfaceEntity.setUrl(url).setType(types.get(0).name());
+
+            //参数列表
+            HandlerMethod handlerMethod = methodMap.get(info);
+            System.out.println(handlerMethod);
+            List<String> excludeClass=Arrays.asList("javax.servlet.http.HttpSession","javax.servlet.http.HttpServletResponse");
+            MethodParameter[] methodParameters = handlerMethod.getMethodParameters();
+            List<ParameterEntity> parameters = Arrays.stream(methodParameters).filter(parameter->!excludeClass.contains(parameter.getParameterType().getName()))
+                    .map(parameter -> {
+                        ParameterEntity parameterEntity = new ParameterEntity().setName(parameter.getParameterName());
+                        Class<?> parameterType = parameter.getParameterType();
+                        if(parameterType.isPrimitive()||parameterType.equals(String.class)){
+                            parameterEntity.setType(parameterType.getName());
+                        }else{
+                            String classStruct = CommonUtil.getClassStruct(parameterType.getName());
+                            parameterEntity.setType(classStruct);
+                        }
+                        return parameterEntity;
+                    })
+                    .collect(Collectors.toList());
+            interfaceEntity.setParameters(parameters);
+            objects.add(interfaceEntity);
+        }
+        return objects;
+    }
+
 }

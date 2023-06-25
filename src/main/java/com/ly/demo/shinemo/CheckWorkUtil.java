@@ -37,15 +37,21 @@ public class CheckWorkUtil {
                 continue;
             }
             Date dutyTime = dayInfo.getDutyTimes().get(0).getDutyTime();
-            String formatDay = DateUtil.format(dutyTime, "yyyy-MM-dd");
+            Date 下班时间 = null;
+            String format下班时间 = null;
+            if(dayInfo.getDutyTimes().size()>1){
+                下班时间 = dayInfo.getDutyTimes().get(1).getDutyTime();
+                format下班时间 = DateUtil.format(下班时间, "HH:mm");
+            }
             String formatTime = DateUtil.format(dutyTime, "HH:mm");
+            String formatDay = DateUtil.format(dutyTime, "yyyy-MM-dd");
             //每日工作时间
             BigDecimal dayWorkingTime = dayInfo.getDayWorkingTime();
             //当月第几周
             int weekOfMonth = DateUtil.weekOfMonth(dutyTime);
             //星期几
             Week week = DateUtil.dayOfWeekEnum(dutyTime);
-            System.out.println(formatDay + "   "+formatTime+"打卡,工作时长:" + CheckWorkUtil.formatBetween(dayWorkingTime));
+            System.out.println(formatDay + "   "+formatTime+"--"+format下班时间+"打卡,工作时长:" + CheckWorkUtil.formatBetween(dayWorkingTime));
             if (week == FRIDAY) {
                 strings.add("\t\t\t\t\t第" + weekOfMonth + "周工作时长:" + weekWorkTime.add(dayWorkingTime)+"h");
                 if(j == workTime.getDayInfos().size() - 1){

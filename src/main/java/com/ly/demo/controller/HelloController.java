@@ -57,9 +57,10 @@ public class HelloController {
     }
 
     @GetMapping("/head")
-    public void head(@RequestBody UserVo vo, @RequestParam String like) {
+    public void head(@RequestBody UserVo vo,@RequestParam String like) {
         System.out.println(like);
         log.info("uid--->{}", JSONUtil.toJsonStr(vo));
+
     }
 
     @PostConstruct

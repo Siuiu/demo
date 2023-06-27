@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.demo.mapper.ApiDebugMapper">
+
+    <resultMap id="BaseResultMap" type="com.ly.demo.entity.ApiDebugEntity">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="interfacePath" column="interface_path" jdbcType="VARCHAR"/>
+            <result property="interfaceName" column="interface_name" jdbcType="VARCHAR"/>
+            <result property="requestParam" column="request_param" jdbcType="VARCHAR"/>
+            <result property="requestType" column="request_type" jdbcType="VARCHAR"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,interface_path,interface_name,
+        request_param,request_type,gmt_create,
+        gmt_modified
+    </sql>
+</mapper>

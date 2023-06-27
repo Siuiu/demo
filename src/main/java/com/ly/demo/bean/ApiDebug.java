@@ -1,8 +1,7 @@
-package com.ly.demo.config;
+package com.ly.demo.bean;
 
 import cn.hutool.core.collection.CollUtil;
 import com.ly.demo.entity.ApiDebugEntity;
-import com.ly.demo.entity.InterfaceEntity;
 import com.ly.demo.service.impl.ApiDebugServiceImpl;
 import com.ly.demo.utils.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,7 @@ import java.util.Map;
  **/
 @Component
 @Slf4j
-public class ApiDebugConfig {
+public class ApiDebug {
     @Resource
     private WebApplicationContext applicationContext;
     @Resource

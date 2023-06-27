@@ -43,7 +43,6 @@ public class CommonUtil {
 
             // 创建一个包含字段名和字段值的简单结构体
 
-
             // 遍历字段并获取值
             for (Field field : fields) {
                 StructureEntity structure = new StructureEntity();

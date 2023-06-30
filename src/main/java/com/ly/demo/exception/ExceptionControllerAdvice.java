@@ -3,6 +3,7 @@ package com.ly.demo.exception;
 import com.ly.demo.entity.SmResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,4 +34,16 @@ public class ExceptionControllerAdvice {
         bindingResult.getFieldErrors().forEach((fieldError) -> errMap.put(fieldError.getField(),fieldError.getDefaultMessage()));
         return SmResult.fail(400,"提交的数据不合法").data(errMap);
     }
+
+    /**
+     * 参数非法（效验参数）异常 MethodArgumentNotValidException
+     * @return SmResult
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public SmResult httpMessageNotReadableException(HttpMessageNotReadableException e) {
+        log.error("请求消息体不可读:{}",e.getMessage());
+
+        return SmResult.fail(400,"提交的数据格式化错误");
+    }
+
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -55,7 +56,6 @@ public class UserEntity implements Serializable {
     private LocalDateTime updateTime;
 
     @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-    @NotBlank(message = "请输入需要修改的数据")
+    @NotNull(message = "请输入需要修改的数据")
     public Long iddd;
 }

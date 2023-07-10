@@ -24,6 +24,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -41,9 +42,20 @@ public class HelloController {
     @Resource
     private ApiDebugServiceImpl apiDebugService;
 
-    @PostMapping(value = "/hello",name = "哈喽")
-    public SmResult hello(@Valid @RequestBody UserEntity user) {
-        return userService.getList();
+    @GetMapping(value = "/hello", name = "哈喽")
+    public String hello() {
+        return "hello world!!!";
+    }
+
+    @GetMapping(value = "/helloPeople", name = "哈喽")
+    public String helloPeople(@RequestParam String s1) {
+        return "hello " + s1 + "!!!";
+    }
+
+    @GetMapping(value = "/detail", name = "API详情")
+    public SmResult detail(@Valid @NotNull @RequestParam("id") Integer id) {
+        System.out.println(id);
+        return SmResult.ok();
     }
 
     @GetMapping("/VerificationCode")
@@ -57,7 +69,7 @@ public class HelloController {
     }
 
     @GetMapping("/head")
-    public void head(@RequestBody UserVo vo,@RequestParam String like) {
+    public void head(@RequestBody UserVo vo, @RequestParam String like) {
         System.out.println(like);
         log.info("uid--->{}", JSONUtil.toJsonStr(vo));
 

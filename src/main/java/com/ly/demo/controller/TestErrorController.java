@@ -18,17 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @RestController
 public class TestErrorController implements ErrorController {
-    @RequestMapping("/error")
-    public String handleError(HttpServletResponse response) {
-        Integer statusCode = response.getStatus();
-        if (statusCode == 200) {
-            return "成功成功成功成功成功成功成功成功";
-        } else if (statusCode == 400) {
-            return "客户端请求错误";
-        } else if (statusCode == 500) {
-            return "服务端内部错误";
-        }
-        log.info(statusCode.toString());
-        return "未知错误";
-    }
+//    @RequestMapping("/error")
+//    public String handleError(HttpServletResponse response) {
+//        Integer statusCode = response.getStatus();
+//        if (statusCode == 200) {
+//            return "成功成功成功成功成功成功成功成功";
+//        } else if (statusCode == 400) {
+//            return "客户端请求错误";
+//        } else if (statusCode == 500) {
+//            return "服务端内部错误";
+//        }
+//        log.info(statusCode.toString());
+//        return "未知错误";
+//    }
 }

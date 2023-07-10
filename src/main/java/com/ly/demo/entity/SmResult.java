@@ -4,11 +4,13 @@ package com.ly.demo.entity;
  * @Author liuyang
  * @Date 2022-10-31 16:25
  **/
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Data
 public class SmResult<T> implements Serializable {
     // 是否成功
     private boolean success;

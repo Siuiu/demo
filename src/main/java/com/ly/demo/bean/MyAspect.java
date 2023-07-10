@@ -25,6 +25,6 @@ public class MyAspect {
         System.out.println("After executing the method");
 
         // 返回结果
-        return SmResult.ok();
+        return result;
     }
 }

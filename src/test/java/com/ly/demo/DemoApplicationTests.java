@@ -9,6 +9,7 @@ import com.ly.demo.converter.UserConverter;
 import com.ly.demo.entity.SmResult;
 import com.ly.demo.entity.UserEntity;
 import com.ly.demo.entity.UserVo;
+import com.ly.demo.mapper.UserMapper;
 import com.ly.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,14 +29,10 @@ public class DemoApplicationTests {
     UserService userService;
     @Autowired
     StringRedisTemplate redisTemplate;
-
+    @Resource
+    UserMapper userMapper;
     @Test
     public void smsTest() {
-//        String tenantCode = "liuyang";
-//        String date = DateUtil.today().replace("-", "");
-//        String key = date + "_" + tenantCode;
-//        redisTemplate.opsForValue().increment(key, 1);
-//        redisTemplate.expire(key, 1, TimeUnit.DAYS);
     }
 
     @Test

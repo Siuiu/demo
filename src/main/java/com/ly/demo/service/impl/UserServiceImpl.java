@@ -1,7 +1,9 @@
 package com.ly.demo.service.impl;
 
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ly.demo.entity.SmResult;
@@ -15,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -43,13 +44,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
         this.page(page, null);
         return SmResult.ok().data(page);
     }
+
     @Transactional(rollbackFor = Exception.class)
-    public void transactionTest1(){
+    public void transactionTest1() {
         this.transactionTest12();
         throw new SHException("6");
     }
+
     @Value("#{'${baas.role}'.split(',')}")
     private List<Long> menuIds;
+
     @Override
     public String getValue() {
         return JSONUtil.toJsonStr(menuIds);
@@ -59,6 +63,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
     public void transactionTest12() {
         UserEntity user = new UserEntity().setId(13).setName("dsad");
         mapper.updateById(user);
+    }
+
+    @Override
+    public SmResult getUserById(Integer id) {
+        Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getId, id);
+        return null;
     }
 }
 

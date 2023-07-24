@@ -1,10 +1,13 @@
 package com.ly.demo.controller;
 
+import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -48,5 +51,18 @@ public class UrlController {
         System.out.println(JSONUtil.toJsonStr(requestQuery));
         System.out.println(JSONUtil.toJsonStr(requestBody));
         System.out.println(requestHeaders);
+    }
+    @GetMapping("/getRemoteAddr")
+    public void getRemoteAddr(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c:cookies){
+            if("admin_login".equals(c.getName())){
+                String decode = URLDecoder.decode(c.getValue(), StandardCharsets.UTF_8);
+                Map bean = JSONUtil.toBean(decode, Map.class);
+                Object o = bean.get("bisSysId");
+            }
+        }
+
+        System.out.println(request.getRemoteAddr());
     }
 }

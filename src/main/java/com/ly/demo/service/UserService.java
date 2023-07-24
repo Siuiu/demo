@@ -17,4 +17,6 @@ public interface UserService extends IService<UserEntity> {
     void transactionTest1();
 
     String getValue();
+
+    SmResult getUserById(Integer id);
 }

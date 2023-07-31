@@ -23,4 +23,8 @@ public class MPController {
     public SmResult getUserById(@RequestParam Integer id){
         return service.getUserById(id);
     }
+    @GetMapping("/yesterDay")
+    public SmResult yesterDay(){
+        return service.yesterDay();
+    }
 }

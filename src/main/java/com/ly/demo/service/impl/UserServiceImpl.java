@@ -70,6 +70,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
         Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getId, id);
         return null;
     }
+
+    @Override
+    public SmResult yesterDay() {
+        LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery(UserEntity.class).apply("DATE(create_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)").in(UserEntity::getName,"hong");
+        Integer integer = mapper.selectCount(queryWrapper);
+        System.out.println(integer);
+        return null;
+    }
 }
 
 

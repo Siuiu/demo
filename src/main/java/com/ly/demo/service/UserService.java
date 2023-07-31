@@ -19,4 +19,6 @@ public interface UserService extends IService<UserEntity> {
     String getValue();
 
     SmResult getUserById(Integer id);
+
+    SmResult yesterDay();
 }

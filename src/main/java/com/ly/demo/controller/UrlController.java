@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author liuyang
@@ -64,5 +61,9 @@ public class UrlController {
         }
 
         System.out.println(request.getRemoteAddr());
+    }
+    @GetMapping(value = "/optionalRequestBody", name = "mock Get接口")
+    public void apiMockGet( @RequestBody Optional<HashMap<String, Object>> requestBody) {
+        System.out.println(requestBody.isPresent());
     }
 }

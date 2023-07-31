@@ -596,6 +596,449 @@
                             "realDutyTime": "2023-07-20 09:00:00",
                             "isUpdateSign": false,
                             "id": 73997
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-20 20:41:43",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-20 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 74158
+                        }
+                    ],
+                    "dayWorkingTime": "10.0"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-21 09:12:21",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-21 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 74427
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-21 18:16:29",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-21 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 74706
+                        }
+                    ],
+                    "dayWorkingTime": "7.6"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-22 09:15:18",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 74811
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-22 20:00:15",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 74871
+                        }
+                    ],
+                    "dayWorkingTime": "9.2"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [],
+                    "dayWorkingTime": "0.0"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-24 09:10:16",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-24 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 74964
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-24 21:02:28",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-24 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 75175
+                        }
+                    ],
+                    "dayWorkingTime": "10.4"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-25 09:08:06",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-25 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 75394
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-25 21:05:30",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-25 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 75659
+                        }
+                    ],
+                    "dayWorkingTime": "10.4"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-26 09:11:18",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-26 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 75819
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-26 20:10:38",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-26 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 76104
+                        }
+                    ],
+                    "dayWorkingTime": "9.5"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-27 09:11:24",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-27 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 76231
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-27 21:00:55",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-27 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 76462
+                        }
+                    ],
+                    "dayWorkingTime": "10.3"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-28 09:10:43",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-28 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 76627
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-28 18:37:43",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-28 18:00:00",
+                            "isUpdateSign": false,
+                            "id": 76964
+                        }
+                    ],
+                    "dayWorkingTime": "8.0"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-29 09:19:34",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 77018
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-29 19:08:40",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 77075
+                        }
+                    ],
+                    "dayWorkingTime": "8.3"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-30 09:26:59",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 77090
+                        },
+                        {
+                            "dutyType": 2,
+                            "status": 2,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-30 19:31:06",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "",
+                            "isUpdateSign": false,
+                            "id": 77108
+                        }
+                    ],
+                    "dayWorkingTime": "8.6"
+                },
+                {
+                    "approveList": [],
+                    "dutyTimes": [
+                        {
+                            "dutyType": 2,
+                            "status": 1,
+                            "dutyIndex": 0,
+                            "dutyTime": "2023-07-31 09:07:46",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-31 09:00:00",
+                            "isUpdateSign": false,
+                            "id": 77158
+                        },
+                        {
+                            "dutyType": 0,
+                            "status": 0,
+                            "dutyIndex": 1,
+                            "dutyTime": "2023-07-31 18:00:00",
+                            "address": "",
+                            "mustSignReason": "",
+                            "exSignIn": {
+                                "reportReason": "",
+                                "urls": [],
+                                "isReport": false
+                            },
+                            "dutyTimes": 1,
+                            "needCover": false,
+                            "realDutyTime": "2023-07-31 18:00:00",
+                            "isUpdateSign": false,
+                            "id": -1
                         }
                     ],
                     "dayWorkingTime": "0.0"

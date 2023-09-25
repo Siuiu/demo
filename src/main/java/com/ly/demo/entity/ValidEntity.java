@@ -2,8 +2,7 @@ package com.ly.demo.entity;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import java.util.HashMap;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Author liuyang
@@ -11,7 +10,6 @@ import java.util.HashMap;
  **/
 @Data
 public class ValidEntity {
-    @NotBlank
-    private String id;
-    private HashMap<Object,Object> requestBody;
+    @NotNull
+    private Long id;
 }

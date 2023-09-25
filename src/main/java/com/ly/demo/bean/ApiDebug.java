@@ -24,7 +24,7 @@ import java.util.Map;
  * @Author liuyang
  * @Date 2023/6/25 17:04
  **/
-@Component
+//@Component
 @Slf4j
 public class ApiDebug {
     @Resource

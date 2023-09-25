@@ -21,4 +21,6 @@ public interface UserService extends IService<UserEntity> {
     SmResult getUserById(Integer id);
 
     SmResult yesterDay();
+
+    SmResult oderby();
 }

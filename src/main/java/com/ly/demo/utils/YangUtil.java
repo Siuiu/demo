@@ -49,7 +49,37 @@ public class YangUtil {
             Faker faker = new Faker();
             Random random = new Random();
             Instant endInstant = Instant.now();
-            Instant startInstant = endInstant.minus(6, ChronoUnit.DAYS);
+            Instant startInstant = endInstant.minus(7, ChronoUnit.DAYS);
+
+            String query = "INSERT INTO api_report_log (access_time, biz_code) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            for (int i = 0; i < numRecords; i++) {
+                long randomMillis = startInstant.toEpochMilli() + (long) (random.nextDouble() * (endInstant.toEpochMilli() - startInstant.toEpochMilli()));
+                Instant randomInstant = Instant.ofEpochMilli(randomMillis);
+                preparedStatement.setTimestamp(1, new java.sql.Timestamp(randomInstant.toEpochMilli()));
+                preparedStatement.setInt(2, random.nextInt(3) * 200); // biz_code can be 0, 200, or 500
+                preparedStatement.addBatch();
+            }
+
+            preparedStatement.executeBatch();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("生成完成！数据已插入数据库。");
+    }
+
+    /**
+     * 生成随机数据
+     */
+    public static void randomSqlData二期研发() {
+        int numRecords = 1000000;
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://10.0.17.100:3309/zqzt_statistics", "im", "CCBcq8xCpBLvaZPwGQJ8YKTy2zN")) {
+            Faker faker = new Faker();
+            Random random = new Random();
+            Instant endInstant = Instant.now();
+            Instant startInstant = endInstant.minus(7, ChronoUnit.DAYS);
 
             String query = "INSERT INTO api_report_log (access_time, biz_code) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -71,6 +101,6 @@ public class YangUtil {
     }
 
     public static void main(String[] args) {
-        randomSqlData();
+            System.out.println(10&32);
     }
 }

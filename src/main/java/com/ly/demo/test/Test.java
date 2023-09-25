@@ -1,19 +1,19 @@
 package com.ly.demo.test;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.thread.ThreadUtil;
-import cn.hutool.core.util.RandomUtil;
-import com.github.javafaker.Faker;
+import cn.hutool.core.io.FileUtil;
 import com.ly.demo.service.UserService;
-import com.ly.demo.shinemo.CheckWorkUtil;
-import com.ly.demo.thread.ApiReportLogThread;
+import com.ly.demo.vo.DownloadTaskDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriUtils;
 
-import java.net.InetAddress;
-import java.util.concurrent.ExecutorService;
-
-import static cn.hutool.core.date.DateField.HOUR;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 
 /**
@@ -24,12 +24,12 @@ import static cn.hutool.core.date.DateField.HOUR;
 @Slf4j
 public class Test {
     private static UserService u;
+    private final static String CAS_URL = "https://imc-khcymjxj.betatest.huaweioneaccess.com/api/v1/cas/login";
+    private final static String OAUTH_URL = "https:zz///imc-czraddpg.betatest.huaweioneaccess.com/api/v1/oauth2/authorize";
 
-    public static void main(String[] args) throws Exception {
-        ExecutorService executorService = ThreadUtil.newExecutor(10);
-        for(int i=0;i<5;i++){
-            ApiReportLogThread apiReportLogThread = new ApiReportLogThread();
-            executorService.submit(apiReportLogThread);
-        }
+
+    public static void main(String[] args) throws IOException {
+
     }
+
 }

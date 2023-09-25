@@ -2,6 +2,7 @@ package com.ly.demo.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -67,16 +68,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
 
     @Override
     public SmResult getUserById(Integer id) {
-        Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getId, id);
-        return null;
+        UserEntity byId = this.getById(id);
+        return SmResult.ok(byId);
     }
 
     @Override
     public SmResult yesterDay() {
-        LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery(UserEntity.class).apply("DATE(create_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)").in(UserEntity::getName,"hong");
-        Integer integer = mapper.selectCount(queryWrapper);
+        LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery(UserEntity.class).apply("DATE(create_time) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)").in(UserEntity::getName, "hong");
+        Long integer = mapper.selectCount(queryWrapper);
         System.out.println(integer);
         return null;
+    }
+
+    @Override
+    public SmResult oderby() {
+        QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("create_time");
+        List<UserEntity> userEntities = mapper.selectList(queryWrapper);
+        return SmResult.ok(userEntities);
     }
 }
 

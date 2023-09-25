@@ -11,6 +11,6 @@ import java.util.concurrent.Callable;
 public class ApiReportLogThread implements Runnable {
     @Override
     public void run() {
-        YangUtil.randomSqlData();
+        YangUtil.randomSqlData二期研发();
     }
 }

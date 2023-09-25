@@ -3,7 +3,6 @@ package com.ly.demo.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -12,10 +11,9 @@ import java.util.Date;
 
 
 /**
- * 
  * @TableName t_account
  */
-@TableName(value ="t_account")
+@TableName(value = "t_account")
 @Data
 public class AccountEntity implements Serializable {
     /**
